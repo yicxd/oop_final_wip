@@ -59,3 +59,22 @@ class Snake(GameObject):
         head = self.coords[-1]
         snake_body = self.coords[:-1]
         return head not in snake_body #this means snake is still alive
+    
+    def snake_grow(self):
+        # get last point direction
+        a = self.coords[0]
+        b = self.coords[1]
+
+        tail = a[:]
+
+        if a[0] < b[0]:
+            tail[0]-=1
+        elif a[1] < b[1]:
+            tail[1]-=1
+        elif a[0] > b[0]:
+            tail[0]+=1
+        elif a[1] > b[1]:
+            tail[1]+=1
+
+        tail = self._check_limit(tail)
+        self.coords.insert(0, tail)

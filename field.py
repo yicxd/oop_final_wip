@@ -53,3 +53,8 @@ class Field:
             for j in range(self.size):
                 row += self.icons[self.field[i][j]]
             screen.addstr(i, 0, row)
+
+    def snake_eat(self): #checks if snake ate
+        entity = self.get_entity_pos()
+        head = self.snake_coords[-1]
+        return entity == head
