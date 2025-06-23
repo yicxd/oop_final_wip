@@ -9,6 +9,7 @@ class Snake(GameObject):
         self.coords = [[0, 0], [0, 1], [0, 2], [0, 3]]
         self.field = None
         
+
     def set_direction(self, ch):
         if ch == curses.KEY_LEFT and self.direction == curses.KEY_RIGHT:
             return
@@ -19,6 +20,7 @@ class Snake(GameObject):
         if ch == curses.KEY_DOWN and self.direction == curses.KEY_UP:
             return 
         self.direction = ch
+
 
     def move(self):
         head = self.coords[-1][:] #coords of the head
@@ -42,8 +44,10 @@ class Snake(GameObject):
             print("You Lost!")
             sys.exit()
     
+
     def set_field(self, field):
         self.field = field
+
 
     def _check_limit(self, point): #checks limit of the field
         if point[0] > self.field.size-1:
@@ -55,10 +59,12 @@ class Snake(GameObject):
         elif point[1] > self.field.size-1:
             point[1] = 0
 
+
     def snake_alive(self):
         head = self.coords[-1]
         snake_body = self.coords[:-1]
         return head not in snake_body #this means snake is still alive
+    
     
     def snake_grow(self):
         # get last point direction
