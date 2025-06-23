@@ -48,10 +48,13 @@ class Field:
         self.clear_field()
 
         for i, j in self.snake_coords:
-            self.field[i][j] = 1
+            if 0 <= i < self.size and 0 <= j < self.size:
+                self.field[i][j] = 1
 
-        head = self.snake_coords[-1]
-        self.field[head[0]][head[1]] = 2
+        if self.snake_coords:
+            head = self.snake_coords[-1]
+            if 0 <= head[0] < self.size and 0 <= head[1] < self.size:
+                self.field[head[0]][head[1]] = 2
 
         for i in range(self.size):
             row = ''
