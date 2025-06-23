@@ -21,6 +21,14 @@ class Field:
             if entity not in self.snake_coords:
                 self.field[i][j] = 3
                 break
+
+    def get_entity_pos(self):
+        for i in range(self.size):
+            for j in range(self.size):
+                if self.field[i][j] == 3:
+                    return [i, j]
+
+        return [-1, -1]
     
     def _generate_field(self):
         self.field = [[0 for _ in range(self.size)] for _ in range(self.size)]
