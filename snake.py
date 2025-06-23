@@ -45,3 +45,8 @@ class Snake(GameObject):
             point[1] = self.field.size-1
         elif point[1] > self.field.size-1:
             point[1] = 0
+
+    def snake_alive(self):
+        head = self.coords[-1]
+        snake_body = self.coords[:-1]
+        return head not in snake_body #this means snake is still alive
