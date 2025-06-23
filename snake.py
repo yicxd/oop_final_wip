@@ -1,5 +1,6 @@
 from game_object import GameObject
 import curses
+import sys
 
 class Snake(GameObject):
     def __init__(self, name):
@@ -32,6 +33,14 @@ class Snake(GameObject):
             head[1]+=1
         elif self.direction == curses.KEY_LEFT:
             head[1]-=1
+
+        del(self.coords[0])
+        self.coords.append(head)
+        self.field.snake_coords = self.coords
+
+        if not self.snake_alive(): #if snake bumps to self, loss
+            print("You Lost!")
+            sys.exit()
     
     def set_field(self, field):
         self.field = field
