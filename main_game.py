@@ -1,18 +1,16 @@
 import curses
 import time
 import sys
-from random import randint
 from field import Field
 from snake import Snake
 
 
 def main(screen):
-    # Configure screen
+    #configure screen
     screen.timeout(0)
 
-    # Init snake & field
     field = Field(10)
-    snake = Snake("Joe")
+    snake = Snake("Dan")
     snake.set_field(field)
 
     while True:

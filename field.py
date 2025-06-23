@@ -3,6 +3,7 @@ from random import randint
 class Field:
     def __init__(self, size):
         self.size = size
+        self.cell_width = 2
         self.icons = {
             0: ' . ', #the grass where u move
             1: ' * ', #body of snake
@@ -46,10 +47,10 @@ class Field:
         size = self.size
         self.clear_field()
 
-        for i, j in self.snake_coords: #render snake on the field
+        for i, j in self.snake_coords:
             self.field[i][j] = 1
 
-        head = self.snake_coords[-1] #marks head
+        head = self.snake_coords[-1]
         self.field[head[0]][head[1]] = 2
 
         for i in range(self.size):
@@ -57,7 +58,6 @@ class Field:
             for j in range(self.size):
                 row += self.icons[self.field[i][j]]
             screen.addstr(i, 0, row)
-
 
     def snake_eat(self): #checks if snake ate
         entity = self.get_entity_pos()

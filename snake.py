@@ -24,7 +24,7 @@ class Snake(GameObject):
 
     def move(self):
         head = self.coords[-1][:] #coords of the head
-        head = self._check_limit(head) #checks limit of the field through head
+        head = self.check_limit(head) #checks limit of the field through head
 
         #new updating coords of the head
         if self.direction == curses.KEY_UP:
@@ -55,7 +55,7 @@ class Snake(GameObject):
         self.field = field
 
 
-    def _check_limit(self, point): #checks limit of the field
+    def check_limit(self, point): #checks limit of the field
         if point[0] > self.field.size-1:
             point[0] = 0
         elif point[0] < 0:
@@ -64,6 +64,8 @@ class Snake(GameObject):
             point[1] = self.field.size-1
         elif point[1] > self.field.size-1:
             point[1] = 0
+
+        return point
 
 
     def snake_alive(self):
@@ -88,5 +90,5 @@ class Snake(GameObject):
         elif a[1] > b[1]:
             tail[1]+=1
 
-        tail = self._check_limit(tail)
+        tail = self.check_limit(tail)
         self.coords.insert(0, tail)

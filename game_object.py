@@ -9,7 +9,7 @@ class GameObject:
     def get_position(self):
         return self.position
     
-    def direction(self, direction):
+    def direct_move(self, direction):
         if direction == "up":
             self.position[0] -= 1
         elif direction == "down":
