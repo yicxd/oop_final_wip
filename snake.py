@@ -43,6 +43,12 @@ class Snake(GameObject):
         if not self.snake_alive(): #if snake bumps to self, loss
             print("You Lost!")
             sys.exit()
+
+        #check if snake eat an entity
+        if self.field.snake_eat(): #if yes trigger this one time
+            curses.beep()
+            self.snake_grow()
+            self.field.add_entity()
     
 
     def set_field(self, field):
@@ -65,7 +71,7 @@ class Snake(GameObject):
         snake_body = self.coords[:-1]
         return head not in snake_body #this means snake is still alive
     
-    
+
     def snake_grow(self):
         # get last point direction
         a = self.coords[0]
