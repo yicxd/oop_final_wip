@@ -8,3 +8,13 @@ class GameObject:
 
     def get_position(self):
         return self.position
+    
+    def direction(self, direction):
+        if direction == "up":
+            self.position[0] -= 1
+        elif direction == "down":
+            self.position[0] += 1
+        elif direction == "left":
+            self.position[1] -= 1
+        elif direction == "right":
+            self.position[1] += 1
