@@ -10,6 +10,8 @@ class Field:
             3: ' % ', #the apple
         }
         self.snake_coords = []
+        self.generate_field()
+        self.add_entity()
 
     def add_entity(self):
         
@@ -30,15 +32,15 @@ class Field:
 
         return [-1, -1]
     
-    def _generate_field(self):
+    def generate_field(self):
         self.field = [[0 for _ in range(self.size)] for _ in range(self.size)]
 
-    def _clear_field(self):        
+    def clear_field(self):        
         self.field = [[j if j!= 1 and j!= 2 else 0 for j in i] for i in self.field]
 
     def render(self, screen):
         size = self.size
-        self._clear_field()
+        self.clear_field()
 
         for i, j in self.snake_coords: #render snake on the field
             self.field[i][j] = 1
