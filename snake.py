@@ -31,3 +31,6 @@ class Snake(GameObject):
             head[1]+=1
         elif self.direction == curses.KEY_LEFT:
             head[1]-=1
+    
+    def set_field(self, field):
+        self.field = field
